@@ -9,6 +9,7 @@
  * 
  * /
 /***************目录************************/
+import Bass_plateform from "./chain_serve.js"
 const componentRouters = [
       {
             path: 'rh_button',
@@ -474,6 +475,7 @@ const componentRouters = [
                   title: '销项首页',
                   hideInMenu: false,
             }
-      }
+      },
+      ...Bass_plateform
 ]
 export default componentRouters

@@ -17,7 +17,54 @@
                   margin-left: 5px;
                   }
             }
+            .operate-btns{
+                  width: 75px;
+                  .rh-button{
+                        float:left;
+                        margin-right:20px;
+                        font-size: 14px;
+                        .bt-icon{
+                              font-size:14px;
+                        }
+                        &.showtip{
+                              margin-right: 0px;
+                        }
+                  }
+            }
       }
+}
+.animation-wrap{
+      transition: 1s;
+      &.wrap-open{
+            height:inherit;
+      }
+      &.wrap-close{
+            height:0px;
+            overflow: hidden;
+      }
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active, 2.1.8 版本以下 */ {
+    opacity: 0
+}
+.rh-page-row{
+      padding: 20px 0px ;
+      background: rgb(255, 255, 255);
+      margin-bottom: 10px;
+
+      .rh-row{
+            .el-form{
+                  .el-row{
+                        &:last-child{
+                              .el-form-item{
+                                    margin-bottom: 0px;
+                              }
+                        }
+                  }
+            }
+      }   
 }
 .page-title{
       font-size: 14px;
