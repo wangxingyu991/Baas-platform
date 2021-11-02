@@ -67,17 +67,17 @@
     <div class="rh-page-content">
       <div class="rh-operate clearfix">
         <div class="rh-pull-left">
-          <el-button type="primary">新增</el-button>
+          <el-button type="primary" @click="Dialog=true">新增</el-button>
           <el-button type="primary">修改</el-button>
           <el-button type="danger" icon="el-icon-delete">删除</el-button>
-            <el-dropdown>
+            <el-dropdown  trigger="click">
                   <el-button type="primary">
                         更多 <i class="el-icon-arrow-down"></i>
                   </el-button>
-                  <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-menu slot="dropdown" >
                         <el-dropdown-item><i class="el-icon-download"></i> 导出</el-dropdown-item>
                         <el-dropdown-item><i class="el-icon-tickets"></i> 查看明细</el-dropdown-item>
-                        <el-dropdown-item><i class="el-icon-basketball"></i> 检验资源状态</el-dropdown-item>
+                        <el-dropdown-item @click.native="Dialog2 = true"><i class="el-icon-basketball"></i> 检验资源状态</el-dropdown-item>
                   </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -142,11 +142,33 @@
           >
           </el-pagination>
       </div>
+      <el-dialog 
+      title="新增资源信息"
+      :visible.sync = "Dialog"
+      width="50%"
+      append-to-body
+      :close-on-click-modal='false'
+      :before-close="handleClose">
+      <add-resources></add-resources>
+      </el-dialog>
+
+      <el-dialog 
+      title="检测资源状态"
+       
+      :visible.sync = "Dialog2"
+      width="50%"
+      append-to-body
+      :close-on-click-modal='false'
+      :before-close="handleClose2">
+        <check-resources></check-resources>
+      </el-dialog>
     </div>
   </div>
 </template>
 
 <script>
+import addResources from "./resources/add_resources.vue"
+import checkResources from "./resources/check_resources.vue"
 export default {
   data(){
       return{
@@ -218,8 +240,15 @@ export default {
           td_zyssz: '王小虎',
           td_zyip: '上海市普陀区金沙江路 1518 弄',
            td_bz:'2224444'
-        }]
+        }],
+        //弹出层
+        Dialog:false,
+        Dialog2:false,
       }
+  },
+  components:{
+    addResources,
+    checkResources
   },
   created(){
     this.theadList = this.arry;
@@ -248,7 +277,12 @@ export default {
       return newArry;
     },
     pageChang(val){
-         
+    },
+    handleClose(){
+      this.Dialog = false;
+    },
+    handleClose2(){
+      this.Dialog2 = false;
     }
   }
 }
